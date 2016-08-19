@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <!-- will contain "Hello, foo!" -->
+        <div id="template_container_1">loading...</div>
+        
+        <!-- will contain "Hi, bar!" -->
+        <div id="template_container_2">loading...</div>
+        
+        <script>
+            var templateFunction = {{ vanillajstemplate('<h1><% if ( hello === true ) { %>Hello, <% } else { %>Hi, <% } %><%= who %>!</h1>') }};
+
+            "use strict";
+            
+            document.getElementById('template_container_1').innerHTML = templateFunction({ 
+                hello: true, 
+                who: 'foo' 
+            });
+            
+            document.getElementById('template_container_2').innerHTML = templateFunction({ 
+                hello: false, 
+                who: 'bar' 
+            });
+        </script>
+    </body>
+</html>

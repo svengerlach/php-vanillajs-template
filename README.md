@@ -37,7 +37,7 @@ composer require svengerlach/php-vanillajs-template
 
 This library can be used either as a standalone component or as a [twig](http://twig.sensiolabs.org/) extension.
 
-### Standalone usage
+### Standalone
 
 See [examples/standalone.php](examples/standalone.php).
 
@@ -64,3 +64,67 @@ $templateCompiled = $compiler->compile($template);
     </body>
 </html>
 ```
+
+### Twig extension
+
+See [examples/twigextension.html.twig](examples/twigextension.php).
+
+```php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+// insantiate twig loader
+$loader = new \Twig_Loader_Filesystem([__DIR__]);
+
+// instantiate twig
+$twig = new \Twig_Environment($loader);
+
+// instantiate compiler
+$compiler = new \Svengerlach\VanillaJSTemplate\Compiler();
+
+// instantiate twig extension
+$extension = new \Svengerlach\VanillaJSTemplate\TwigExtension($compiler);
+
+// add extension to twig
+$twig->addExtension($extension);
+
+// see twig template below
+echo $twig->render('twigextension.html.twig');
+```
+
+See [examples/twigextension.html.twig](examples/twigextension.html.twig).
+
+```html
+<!DOCTYPE html>
+<html>
+    <body>
+        <!-- will contain "Hello, foo!" -->
+        <div id="template_container_1">loading...</div>
+        
+        <!-- will contain "Hi, bar!" -->
+        <div id="template_container_2">loading...</div>
+        
+        <script>
+            var templateFunction = {{ vanillajstemplate('<h1><% if ( hello === true ) { %>Hello, <% } else { %>Hi, <% } %><%= who %>!</h1>') }};
+
+            "use strict";
+            
+            document.getElementById('template_container_1').innerHTML = templateFunction({ 
+                hello: true, 
+                who: 'foo' 
+            });
+            
+            document.getElementById('template_container_2').innerHTML = templateFunction({ 
+                hello: false, 
+                who: 'bar' 
+            });
+        </script>
+    </body>
+</html>
+
+```
+
+## Room for improvement
+
+One downside of the pre-compiled templates is that they are not compatible with JavaScript strict mode (`"use strict";`). The used `with` statement is nowadays considered bad practice. 
