@@ -32,3 +32,35 @@ Installation is recommended to be done via [composer](https://getcomposer.org/) 
 ```sh
 composer require svengerlach/php-vanillajs-template
 ```
+
+## Usage
+
+This library can be used either as a standalone component or as a [twig](http://twig.sensiolabs.org/) extension.
+
+### Standalone usage
+
+See [examples/standalone.php](examples/standalone.php).
+
+```php
+<?php
+
+$compiler = new \Svengerlach\VanillaJSTemplate\Compiler();
+
+$template = '<h1>Hello, <%= foo %>!</h1>';
+$templateCompiled = $compiler->compile($template);
+```
+
+```html
+<!DOCTYPE html>
+<html>
+    <body>
+        <!-- will contain "Hello, World!" -->
+        <div id="template_container">loading...</div>
+        
+        <script>
+        var templateFunction = <?= $templateCompiled; ?>;
+        document.getElementById('template_container').innerHTML = templateFunction({ foo: 'World' });
+        </script>
+    </body>
+</html>
+```
