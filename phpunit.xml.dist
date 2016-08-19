@@ -10,6 +10,7 @@
     <testsuites>
         <testsuite name="VanillaJSTemplate Test Suite">
             <file>./tests/CompilerTest.php</file>
+            <file>./tests/TwigExtensionTest.php</file>
         </testsuite>
     </testsuites>
     <filter>
