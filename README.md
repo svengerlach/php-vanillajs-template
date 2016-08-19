@@ -1,5 +1,7 @@
 # PHP VanillaJS Template
 
+[![Build Status](https://travis-ci.org/svengerlach/php-vanillajs-template.svg?branch=master)](https://travis-ci.org/svengerlach/php-vanillajs-template)
+
 A small port of [John Resig's JavaScript micro templating approach](http://ejohn.org/blog/javascript-micro-templating/) to PHP for server-side pre-compilation of simple JavaScript templates.
 
 ## Background
