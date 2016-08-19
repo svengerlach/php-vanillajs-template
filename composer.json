@@ -3,7 +3,7 @@
     "description": "Port of John Resig's micro templating approach to PHP for server-side pre-compilation of simple JavaScript templates",
     "type": "library",
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.4.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.4"
