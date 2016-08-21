@@ -1,5 +1,5 @@
 {
-    "name": "svengerlach/php-vanillajs-template",
+    "name": "svengerlach/vanillajs-template",
     "description": "Port of John Resig's micro templating approach to PHP for server-side pre-compilation of simple JavaScript templates",
     "type": "library",
     "require": {
